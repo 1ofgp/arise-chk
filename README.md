@@ -11,7 +11,7 @@ All the scripts are in `/home/debian/arise/`
 - `logdata\` -- directory with sensors data files (bin), a new file is created every hour. Sampling rate is 1 second. The size of 1 hour file is ~56kB.
 - `readData.py` -- script to read sensors data.
 - `ariseCHK_log.log` -- logger service log file (text).
-- `setRTC_time.py, setSystemTime.sh, getTime.sh` -- see `Timing` section. 
+- `setRTC_time.py, setSystemTime.sh, getTime.py` -- see `Timing` section. 
 
 # Timing
 There are 2 different clocks running:
@@ -23,6 +23,6 @@ All the times must be in UTC!
 ToDo: add NTP synchronization.
 
 Timing scripts:
-- `getTime.sh` -- returns RTC and System time;
-- `setRTC_time` -- set RTC time, not needed unless the RTC unit is disconnected or the battery is dead;
+- `getTime.py` -- returns RTC and System time;
+- `setRTC_time.py` -- set RTC time, not needed unless the RTC unit is disconnected or the battery is dead;
 - `setSystemTime.sh` -- set System time. It is a good idea to set correct system time once the device is constantly running. 
