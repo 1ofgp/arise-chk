@@ -3,7 +3,7 @@ By default the OS imaged is flashed on eMMC, no SD-card needed.
 # Structure
 All the scripts are in `/home/debian/arise/`
 - `taxiON.sh` -- turn TAXI On. Must be run as sudo. By default TAXI is off. ToDo: turn ON at BBB start.
-- `taxiON.sh` -- turn TAXI Off. Must be run as sudo.
+- `taxiOFF.sh` -- turn TAXI Off. Must be run as sudo.
 - `ariseCHK.py` -- main logger script, runs as service (`/etc/systemd/system/arise_logger.service`), no manual launch required by default. The script saves timestamped (RTC by default) INA260 sensor data (voltage and current) every second.
 - `arise_logger_service_Status.sh` -- check the status of the logger service. Must be run as sudo.  
 - `arise_logger_service_Stop.sh` -- stop the logger service (e.g. before changing system or RTC time). Must be run as sudo.  
