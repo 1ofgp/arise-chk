@@ -1,0 +1,21 @@
+# file location /etc/systemd/system/arise_logger.service
+
+[Unit]
+Description=Arise Logger (BeagleBone)
+Wants=network-online.target
+After=multi-user.target
+
+[Service]
+
+User=root
+
+
+Environment="PYTHONPATH=/home/debian/.local/lib/python3.9/site-packages"
+
+# Tell Blinka to stop auto-detecting and just be a BBB
+Environment="BLINKA_FORCEBOARD=BEAGLEBONE_BLACK"
+
+
+WorkingDirectory=/home/debian/arise
+
+ExecStart=/home/debian/arise/ariseCHK_v1p0.py

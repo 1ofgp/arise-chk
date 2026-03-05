@@ -1,28 +1,26 @@
+ARISE CHK v 1.0 March 2026
+
 # Debian Image
 By default the OS imaged is flashed on eMMC, no SD-card needed.
+To copy the image form SD to eMMC:
+Insert SD and hold S2 (next to SD) for ~10 seconds. After a few minutes the image will be copied to eMMC and BBB will turn off, the SD-card then can be removed.
+To get the image as me.
 # Structure
 All the scripts are in `/home/debian/arise/`
-- `taxiON.sh` -- turn TAXI On. Must be run as sudo. By default TAXI is off. ToDo: turn ON at BBB start.
-- `taxiON.sh` -- turn TAXI Off. Must be run as sudo.
+- `taxiON.sh` -- turn TAXI On. Must be run as sudo. By default TAXI is On. 
+- `taxiOFF.sh` -- turn TAXI Off. Must be run as sudo.
 - `ariseCHK.py` -- main logger script, runs as service (`/etc/systemd/system/arise_logger.service`), no manual launch required by default. The script saves timestamped (RTC by default) INA260 sensor data (voltage and current) every second.
 - `arise_logger_service_Status.sh` -- check the status of the logger service. Must be run as sudo.  
 - `arise_logger_service_Stop.sh` -- stop the logger service (e.g. before changing system or RTC time). Must be run as sudo.  
 - `arise_logger_service_Restart.sh` -- restart the logger service. Must be run as sudo.  
-- `logdata\` -- directory with sensors data files (bin), a new file is created every hour. Sampling rate is 1 second. The size of 1 hour file is ~56kB.
+- `logdata\` -- directory with sensors data files (bin), a new file is created every hour. Sampling rate (can be tuned) is ~1.3 seconds without dust (the slowest sensor) and ~2 seconds with dust (minimum averaging).  
 - `readData.py` -- script to read sensors data.
-- `ariseCHK_log.log` -- logger service log file (text).
-- `setRTC_time.py, setSystemTime.sh, getTime.py` -- see `Timing` section. 
+- `ariseCHK_v1p0_log.log` -- logger service log file (text).
+- `setSystemTime.sh` -- set system time, normally the time is set using NTP server, no RTC required compared to old version. All the times must be in UTC!
 
-# Timing
-There are 2 different clocks running:
-- RTC -- default, should stay correct while the battery is alive (should be years);
-- System -- resets every time BBB restarts, can be set manually using corresponding scripts.
-
-All the times must be in UTC!
-
-ToDo: add NTP synchronization.
-
-Timing scripts:
-- `getTime.py` -- returns RTC and System time;
-- `setRTC_time.py` -- set RTC time, not needed unless the RTC unit is disconnected or the battery is dead;
-- `setSystemTime.sh` -- set System time. It is a good idea to set correct system time once the device is constantly running. 
+# Sensors:
+- Current
+- Voltage
+- BME680: temperature, humidity, pressure, VOCs
+- Temperature x4: 1 inside, 3 outside;
+- Dust

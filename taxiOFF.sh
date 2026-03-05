@@ -21,7 +21,7 @@ echo
 echo "--- turning TAXI OFF  ---"
 echo
 
-gpioset --mode=signal --background gpiochip0 7=0
+gpioset --mode=signal --background gpiochip0 7=1
 
 
 if [ $? -eq 0 ]; then
