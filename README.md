@@ -4,6 +4,11 @@ ARISE CHK v 1.0 March 2026
 By default the OS imaged is flashed on eMMC, no SD-card needed.
 To copy the image form SD to eMMC:
 Insert SD and hold S2 (next to SD) for ~10 seconds. After a few minutes the image will be copied to eMMC and BBB will turn off, the SD-card then can be removed.
+Or this
+```
+sudo cp -v /etc/beagle-flasher/beaglebone-black-microsd-to-emmc /etc/default/beagle-flasher
+sudo beagle-flasher .
+```
 # Structure
 All the scripts are in `/home/debian/arise/`
 - `taxiON.sh` -- turn TAXI On. Must be run as sudo. By default TAXI is On. 
